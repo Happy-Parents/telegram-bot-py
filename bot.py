@@ -2,14 +2,14 @@ from telegram import Update, ReplyKeyboardMarkup, Message
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
 BOT_TOKEN = "8108504859:AAFwonWfT6VVV2LlOHf4rtE010x9lmpNlGY"
-ADMIN_GROUP_ID = -1002710807138  # ID групи, куди надсилаються повідомлення
+ADMIN_GROUP_ID = -1002710807138
 
-user_states = {}
-message_to_user_map = {}
+user_states = {}  # user_id → "active_chat"
+message_to_user_map = {}  # group_msg_id → user_id
 
 WELCOME_MESSAGE = "👋 Вітаємо у боті *Happy Parents*!\nОбери опцію нижче:"
 ASK_MESSAGE = "✍️ Напишіть ваше питання. Ми якнайшвидше відповімо."
-CONFIRM_MESSAGE = "✅ Дякуємо! Ваше питання надіслано адміністратору."
+CONFIRM_MESSAGE = "✅ Ваше повідомлення надіслано адміністратору."
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [["❓ Питання адміністратору"]]
@@ -22,7 +22,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     text = message.text
 
-    # 👨‍💻 Якщо це повідомлення в групі та reply
+    # 📩 Адміністратор відповідає в групі через reply
     if chat_id == ADMIN_GROUP_ID and message.reply_to_message:
         original_message_id = message.reply_to_message.message_id
         recipient_id = message_to_user_map.get(original_message_id)
@@ -37,28 +37,28 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await message.reply_text("⚠️ Не вдалося знайти користувача для відповіді.")
         return
 
-    # 🤖 Користувач обирає "Питання адміністратору"
+    # 👤 Користувач натиснув кнопку "Питання адміністратору"
     if text == "❓ Питання адміністратору":
-        user_states[user_id] = "awaiting_question"
+        user_states[user_id] = "active_chat"
         await message.reply_text(ASK_MESSAGE)
         return
 
-    # 🧾 Користувач у стані "очікує питання"
-    if user_states.get(user_id) == "awaiting_question":
-        user_states.pop(user_id)
+    # 🧾 Якщо користувач вже в режимі діалогу
+    if user_states.get(user_id) == "active_chat":
         username = update.effective_user.username or f"id:{user_id}"
-        forwarded_message = await context.bot.send_message(
+        sent = await context.bot.send_message(
             chat_id=ADMIN_GROUP_ID,
-            text=f"📩 Нове питання від @{username} ({user_id}):\n\n{text}"
+            text=f"📩 Повідомлення від @{username} ({user_id}):\n\n{text}"
         )
-
-        # Зберегти зв'язок між повідомленням у групі та користувачем
-        message_to_user_map[forwarded_message.message_id] = user_id
+        message_to_user_map[sent.message_id] = user_id
 
         await message.reply_text(CONFIRM_MESSAGE)
         return
 
+    # 🔄 Якщо нічого не вибрано
     await message.reply_text("🔄 Оберіть дію з меню або натисніть /start.")
+
+
 
 # Запуск бота
 def main():
