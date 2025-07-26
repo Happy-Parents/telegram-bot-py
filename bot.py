@@ -7,16 +7,26 @@ ADMIN_GROUP_ID = -4940266122
 user_states = {}  # user_id → "active_chat", "awaiting_feedback"
 message_to_user_map = {}  # group_msg_id → user_id
 
+# 📌 Константи повідомлень
 WELCOME_MESSAGE = "👋 Вітаємо у боті *Happy Parents*!\nОбери опцію нижче:"
 ASK_MESSAGE = "✍️ Напишіть ваше питання. Ми якнайшвидше відповімо."
 CONFIRM_MESSAGE = "✅ Ваше повідомлення надіслано адміністратору."
+THANKS_FEEDBACK_MESSAGE = "✅ Дякуємо за оцінку!"
+CLOSE_CONVERSATION_MESSAGE = "✅ Дякуємо! Розмову завершено."
+CHOOSE_ACTION_MESSAGE = "🔄 Оберіть дію з меню або натисніть /start."
+FEEDBACK_REQUEST_MESSAGE = "🙏 Дякуємо за спілкування!\nОцініть, будь ласка, розмову:"
+FEEDBACK_SENT_MESSAGE = "✅ Запит на оцінку надіслано користувачу."
+USER_NOT_FOUND_FEEDBACK_MESSAGE = "⚠️ Користувача не знайдено для оцінки."
+ANSWER_SENT_MESSAGE = "📤 Відповідь надіслано користувачу."
+USER_NOT_FOUND_ANSWER_MESSAGE = "⚠️ Не вдалося знайти користувача для відповіді."
 
+QUESTION_BUTTON_TEXT = "❓ Задати питання"
 FEEDBACK_QUESTION = "стоп"
 FEEDBACK_OPTIONS = ["😐", "🙂", "😃"]
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [["❓ Питання адміністратору"]]
+    keyboard = [[QUESTION_BUTTON_TEXT]]
     markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True)
     await update.message.reply_text(WELCOME_MESSAGE, reply_markup=markup, parse_mode='Markdown')
 
@@ -27,12 +37,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     text = message.text.strip()
 
-    # 📩 Адміністратор відповідає в групі через reply
     if chat_id == ADMIN_GROUP_ID and message.reply_to_message:
         original_message_id = message.reply_to_message.message_id
         recipient_id = message_to_user_map.get(original_message_id)
 
-        # 🤖 Якщо адміністратор завершує діалог і просить оцінку
         if text == FEEDBACK_QUESTION:
             if recipient_id:
                 keyboard = [[emoji] for emoji in FEEDBACK_OPTIONS]
@@ -40,48 +48,44 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
                 await context.bot.send_message(
                     chat_id=recipient_id,
-                    text="🙏 Дякуємо за спілкування!\nОцініть, будь ласка, розмову:",
+                    text=FEEDBACK_REQUEST_MESSAGE,
                     reply_markup=markup
                 )
 
                 user_states[recipient_id] = "awaiting_feedback"
-                await message.reply_text("✅ Запит на оцінку надіслано користувачу.")
+                await message.reply_text(FEEDBACK_SENT_MESSAGE)
             else:
-                await message.reply_text("⚠️ Користувача не знайдено для оцінки.")
+                await message.reply_text(USER_NOT_FOUND_FEEDBACK_MESSAGE)
             return
 
-        # Стандартна відповідь адміністратора
         if recipient_id:
             await context.bot.send_message(
                 chat_id=recipient_id,
-                text=f"💬 Відповідь від адміністратора:\n\n{text}"
+                text=f"💬 Відповідь адміністратора:\n\n{text}"
             )
-            await message.reply_text("📤 Відповідь надіслано користувачу.")
+            await message.reply_text(ANSWER_SENT_MESSAGE)
         else:
-            await message.reply_text("⚠️ Не вдалося знайти користувача для відповіді.")
+            await message.reply_text(USER_NOT_FOUND_ANSWER_MESSAGE)
         return
 
-    # 🎯 Користувач надсилає оцінку (будь-де)
     if user_states.get(user_id) == "awaiting_feedback":
         if text in FEEDBACK_OPTIONS:
             await context.bot.send_message(
                 chat_id=ADMIN_GROUP_ID,
                 text=f"📊 Користувач id:{user_id} оцінив розмову як {text}"
             )
-            await message.reply_text("✅ Дякуємо за оцінку!")
+            await message.reply_text(THANKS_FEEDBACK_MESSAGE)
         else:
-            await message.reply_text("✅ Дякуємо! Розмову завершено.")
+            await message.reply_text(CLOSE_CONVERSATION_MESSAGE)
 
         user_states.pop(user_id, None)
         return
 
-    # 👤 Користувач натиснув кнопку "Питання адміністратору"
-    if text == "❓ Питання адміністратору":
+    if text == QUESTION_BUTTON_TEXT:
         user_states[user_id] = "active_chat"
         await message.reply_text(ASK_MESSAGE)
         return
 
-    # 🧾 Якщо користувач вже в режимі діалогу
     if user_states.get(user_id) == "active_chat":
         username = update.effective_user.username or f"id:{user_id}"
         sent = await context.bot.send_message(
@@ -89,15 +93,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             text=f"📩 Повідомлення від @{username} ({user_id}):\n\n{text}"
         )
         message_to_user_map[sent.message_id] = user_id
-
         await message.reply_text(CONFIRM_MESSAGE)
         return
 
-    # 🔄 Якщо нічого не вибрано
-    await message.reply_text("🔄 Оберіть дію з меню або натисніть /start.")
+    await message.reply_text(CHOOSE_ACTION_MESSAGE)
 
 
-# Запуск бота
 def main():
     print("🤖 Happy Bot has been launched...")
 
