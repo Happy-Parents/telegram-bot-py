@@ -4,6 +4,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 # 🔐 Конфіг
 BOT_TOKEN = "8108504859:AAFwonWfT6VVV2LlOHf4rtE010x9lmpNlGY"
 ADMIN_GROUP_ID = -4940266122
+WEBHOOK_URL = "https://telegram-bot-py-ks7p.onrender.com"
 
 # 🧠 Стан
 user_states: dict[int, str] = {}
@@ -134,7 +135,11 @@ def main() -> None:
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    app.run_polling()
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=8080,
+        webhook_url="https://telegram-bot-py-ks7p.onrender.com",
+    )
 
 
 if __name__ == "__main__":
