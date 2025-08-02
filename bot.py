@@ -1,10 +1,11 @@
+import os
+from decouple import config
 from telegram import Update, ReplyKeyboardMarkup, Message
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
-# 🔐 Конфіг
-BOT_TOKEN = "8108504859:AAFwonWfT6VVV2LlOHf4rtE010x9lmpNlGY"
-ADMIN_GROUP_ID = -4940266122
-WEBHOOK_URL = "https://telegram-bot-py-ks7p.onrender.com"
+BOT_TOKEN = config("BOT_TOKEN")
+ADMIN_GROUP_ID = int(config("ADMIN_GROUP_ID"))
+WEBHOOK_URL = config("WEBHOOK_URL")
 
 # 🧠 Стан
 user_states: dict[int, str] = {}
@@ -138,7 +139,7 @@ def main() -> None:
     app.run_webhook(
         listen="0.0.0.0",
         port=8080,
-        webhook_url="https://telegram-bot-py-ks7p.onrender.com",
+        webhook_url=WEBHOOK_URL,
     )
 
 
