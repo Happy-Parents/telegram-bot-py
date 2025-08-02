@@ -7,27 +7,14 @@ BOT_TOKEN = config("BOT_TOKEN")
 ADMIN_GROUP_ID = int(config("ADMIN_GROUP_ID"))
 WEBHOOK_URL = config("WEBHOOK_URL")
 
-# 🧠 Стан
+from messages import (WELCOME_MESSAGE, ASK_MESSAGE, CONFIRM_MESSAGE, THANKS_FEEDBACK_MESSAGE,
+                      CLOSE_CONVERSATION_MESSAGE, CHOOSE_ACTION_MESSAGE, FEEDBACK_REQUEST_MESSAGE,
+                      FEEDBACK_SENT_MESSAGE, USER_NOT_FOUND_FEEDBACK_MESSAGE, ANSWER_SENT_MESSAGE,
+                      USER_NOT_FOUND_ANSWER_MESSAGE, QUESTION_BUTTON_TEXT, FEEDBACK_QUESTION, FEEDBACK_OPTIONS)
+
 user_states: dict[int, str] = {}
 message_to_user_map: dict[int, int] = {}
 
-# 💬 Повідомлення
-WELCOME_MESSAGE = "👋 Вітаємо у боті *Happy Parents*!\nОбери опцію нижче:"
-ASK_MESSAGE = "✍️ Напишіть ваше питання. Ми якнайшвидше відповімо."
-CONFIRM_MESSAGE = "✅ Ваше повідомлення надіслано адміністратору."
-THANKS_FEEDBACK_MESSAGE = "✅ Дякуємо за оцінку! Для початку нової роботи натисність: /start"
-CLOSE_CONVERSATION_MESSAGE = "✅ Дякуємо! Розмову завершено. Для початку нової роботи натисність: /start"
-CHOOSE_ACTION_MESSAGE = "🔄 Оберіть дію з меню або натисніть /start."
-FEEDBACK_REQUEST_MESSAGE = "🙏 Дякуємо за спілкування!\nОцініть, будь ласка, розмову:"
-FEEDBACK_SENT_MESSAGE = "✅ Запит на оцінку надіслано користувачу."
-USER_NOT_FOUND_FEEDBACK_MESSAGE = "⚠️ Користувача не знайдено для оцінки."
-ANSWER_SENT_MESSAGE = "📤 Відповідь надіслано користувачу."
-USER_NOT_FOUND_ANSWER_MESSAGE = "⚠️ Не вдалося знайти користувача для відповіді."
-
-# ⚙️ Константи логіки
-QUESTION_BUTTON_TEXT = "❓ Задати питання"
-FEEDBACK_QUESTION = "стоп"
-FEEDBACK_OPTIONS = ["😐", "🙂", "😃"]
 
 
 def build_keyboard(buttons: list[str]) -> ReplyKeyboardMarkup:
