@@ -26,7 +26,7 @@ async def handle_admin_reply(message: Message, context: ContextTypes.DEFAULT_TYP
     if recipient_id:
         await context.bot.send_message(
             chat_id=recipient_id,
-            text=f"💬 Відповідь адміністратора:\n\n{text}"
+            text=f"{ADMIN_REPLY_LABEL}\n\n{text}"
         )
         await message.reply_text(ANSWER_SENT_MESSAGE)
     else:
