@@ -9,7 +9,7 @@ async def handle_admin_reply(message: Message, context: ContextTypes.DEFAULT_TYP
     original_msg_id = message.reply_to_message.message_id
     recipient_id = message_to_user_map.get(original_msg_id)
 
-    if text == FEEDBACK_QUESTION:
+    if text.lower() == FEEDBACK_QUESTION:
         if recipient_id:
             markup = build_keyboard(FEEDBACK_OPTIONS)
             await context.bot.send_message(
