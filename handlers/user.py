@@ -2,14 +2,15 @@ from telegram import Update, Message
 from telegram.ext import ContextTypes
 from state import user_states, message_to_user_map
 from .admin import handle_admin_reply
-from keyboards import build_keyboard
+from keyboards import BOT_FEATURES_KEYBOARD
 from config import ADMIN_GROUP_ID
 from messages import *
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    markup = build_keyboard([QUESTION_BUTTON_TEXT])
-    await update.message.reply_text(WELCOME_MESSAGE, reply_markup=markup, parse_mode='Markdown')
+    await update.message.reply_text(WELCOME_MESSAGE,
+                                    reply_markup=BOT_FEATURES_KEYBOARD,
+                                    parse_mode='Markdown')
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
