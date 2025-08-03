@@ -1,7 +1,7 @@
 from telegram import Message
 from telegram.ext import ContextTypes
 from state import user_states, message_to_user_map
-from keyboards import build_keyboard
+from keyboards import FEEDBACK_OPTS_KEYBOARD
 from messages import *
 
 async def handle_admin_reply(message: Message, context: ContextTypes.DEFAULT_TYPE, text: str) -> None:
@@ -11,11 +11,10 @@ async def handle_admin_reply(message: Message, context: ContextTypes.DEFAULT_TYP
 
     if text.lower() == FEEDBACK_QUESTION:
         if recipient_id:
-            markup = build_keyboard(FEEDBACK_OPTIONS)
             await context.bot.send_message(
                 chat_id=recipient_id,
                 text=FEEDBACK_REQUEST_MESSAGE,
-                reply_markup=markup
+                reply_markup=FEEDBACK_OPTS_KEYBOARD
             )
             user_states[recipient_id] = "awaiting_feedback"
             await message.reply_text(FEEDBACK_SENT_MESSAGE)

@@ -12,4 +12,4 @@ ANSWER_SENT_MESSAGE = "📤 Відповідь надіслано користу
 USER_NOT_FOUND_ANSWER_MESSAGE = "⚠️ Не вдалося знайти користувача для відповіді."
 QUESTION_BUTTON_TEXT = "❓ Задати питання"
 FEEDBACK_QUESTION = "стоп"
-FEEDBACK_OPTIONS = ["😐", "🙂", "😃"]
+FEEDBACK_OPTS = ["😃", "🙂", "😐"]

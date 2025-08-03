@@ -48,7 +48,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 async def handle_user_feedback(message: Message, context: ContextTypes.DEFAULT_TYPE, user_id: int, text: str) -> None:
     """handle user feedback abot conversation level"""
-    if text in FEEDBACK_OPTIONS:
+    if text in FEEDBACK_OPTS:
         await context.bot.send_message(
             chat_id=ADMIN_GROUP_ID,
             text=f"📊 Користувач id:{user_id} оцінив розмову як {text}"
