@@ -2,6 +2,7 @@ from telegram import Update, Message
 from telegram.ext import ContextTypes
 from state import user_states, message_to_user_map
 from .admin import handle_admin_reply
+from log_config import console_logger
 from keyboards import BOT_FEATURES_KEYBOARD
 from config import ADMIN_GROUP_ID
 from messages import *
@@ -34,6 +35,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Conversation beginning
     if text == QUESTION_BUTTON_TEXT:
+        console_logger.info(f'User with id {user_id} started chat with admin.')
         user_states[user_id] = "active_chat"
         await message.reply_text(ASK_MESSAGE)
         return
@@ -49,20 +51,25 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 async def handle_user_feedback(message: Message, context: ContextTypes.DEFAULT_TYPE, user_id: int, text: str) -> None:
     """handle user feedback abot conversation level"""
+
     if text in FEEDBACK_OPTS:
         await context.bot.send_message(
             chat_id=ADMIN_GROUP_ID,
             text=f"📊 Користувач id:{user_id} оцінив розмову як {text}"
         )
+        console_logger.info(f'User with id {user_id} rated support in valid way: {text}')
         await message.reply_text(THANKS_FEEDBACK_MESSAGE)
     else:
+        console_logger.warning(f'User with id {user_id} rated support in invalid way: {text}')
         await message.reply_text(CLOSE_CONVERSATION_MESSAGE)
+        console_logger.info('Finit message to user delivered.')
 
     user_states.pop(user_id, None)
 
 
 async def handle_user_question(update: Update, context: ContextTypes.DEFAULT_TYPE, text: str) -> None:
     """handle user message in active chat"""
+
     user_id = update.effective_user.id
     username = update.effective_user.username or f"id:{user_id}"
     sent = await context.bot.send_message(
