@@ -1,12 +1,13 @@
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
 from config import WEBHOOK_URL, BOT_TOKEN, ENV
 from handlers.user import start, handle_message
-
+from log_config import console_logger
 
 def main() -> None:
-    print("🤖 Happy Bot has been launched...")
+    console_logger.info("🤖 Happy Bot has been launched...")
 
-    if not WEBHOOK_URL:
+    if not WEBHOOK_URL and ENV == 'production':
+        console_logger.critical('WEBHOOK not found')
         raise ValueError('WEBHOOK not found')
 
     app = ApplicationBuilder().token(BOT_TOKEN).build()
