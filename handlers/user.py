@@ -8,7 +8,6 @@ from log_config import console_logger
 from keyboards import BOT_FEATURES_KEYBOARD
 from config import ADMIN_GROUP_ID
 from messages import *
-import pdb
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(WELCOME_MESSAGE,
