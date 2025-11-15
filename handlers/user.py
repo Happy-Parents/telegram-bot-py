@@ -1,4 +1,6 @@
 from telegram import Update, Message
+    # Update.effective_user has has all info about user
+    # Update.effective_chat has all info about user chat
 from telegram.ext import ContextTypes
 from state import user_states, message_to_user_map
 from .admin import handle_admin_reply
@@ -6,7 +8,6 @@ from log_config import console_logger
 from keyboards import BOT_FEATURES_KEYBOARD
 from config import ADMIN_GROUP_ID
 from messages import *
-
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(WELCOME_MESSAGE,
@@ -35,6 +36,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Conversation beginning
     if text == QUESTION_BUTTON_TEXT:
+        # TODO: handle update.effective_user.is_bot == True
         console_logger.info(f'User with id {user_id} started chat with admin.')
         user_states[user_id] = "active_chat"
         await message.reply_text(ASK_MESSAGE)
@@ -70,11 +72,13 @@ async def handle_user_feedback(message: Message, context: ContextTypes.DEFAULT_T
 async def handle_user_question(update: Update, context: ContextTypes.DEFAULT_TYPE, text: str) -> None:
     """handle user message in active chat"""
 
-    user_id = update.effective_user.id
-    username = update.effective_user.username or f"id:{user_id}"
+    user = update.effective_user
+    display_id = f"id:{user.id}"
+    display_name = f'{user.first_name or user.username or display_id} [{user.language_code}]'
+
     sent = await context.bot.send_message(
         chat_id=ADMIN_GROUP_ID,
-        text=f"📩 Повідомлення від @{username} ({user_id}):\n\n{text}"
+        text=f"📩 Повідомлення від {display_name} ({user.id}):\n\n{text}"
     )
-    message_to_user_map[sent.message_id] = user_id
+    message_to_user_map[sent.message_id] = user.id
     await update.message.reply_text(CONFIRM_MESSAGE)

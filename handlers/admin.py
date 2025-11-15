@@ -11,29 +11,24 @@ async def handle_admin_reply(message: Message, context: ContextTypes.DEFAULT_TYP
 
     # Replying to user question
     if recipient_id:
-        await context.bot.send_message(
-            chat_id=recipient_id,
-            text=f"{ADMIN_REPLY_LABEL}\n\n{text}"
-        )
-        console_logger.info(f'Admin unswer to user id {recipient_id} was sent.')
-        await message.reply_text(ANSWER_SENT_MESSAGE)
+        match text.lower():
+            case txt if txt == FEEDBACK_QUESTION.lower():
+                console_logger.info('Admin asked to rate support.')
+                await context.bot.send_message(
+                    chat_id=recipient_id,
+                    text=FEEDBACK_REQUEST_MESSAGE,
+                    reply_markup=FEEDBACK_OPTS_KEYBOARD
+                )
+                console_logger.info(f'User with id {recipient_id} was asked to rate support.')
+                user_states[recipient_id] = "awaiting_feedback"
+                await message.reply_text(FEEDBACK_SENT_MESSAGE)
+            case _:
+                await context.bot.send_message(
+                    chat_id=recipient_id,
+                    text=f"{ADMIN_REPLY_LABEL}\n\n{text}"
+                )
+                console_logger.info(f'Admin unswer to user id {recipient_id} was sent.')
+                await message.reply_text(ANSWER_SENT_MESSAGE)
     else:
         console_logger.error('Unable to unswer. User not found.')
         await message.reply_text(USER_NOT_FOUND_ANSWER_MESSAGE)
-
-    # Support feedback message handling
-    if text.lower() == FEEDBACK_QUESTION:
-        console_logger.info('Admin asked to rate support.')
-        if recipient_id:
-            await context.bot.send_message(
-                chat_id=recipient_id,
-                text=FEEDBACK_REQUEST_MESSAGE,
-                reply_markup=FEEDBACK_OPTS_KEYBOARD
-            )
-            console_logger.info(f'User with id {recipient_id} was asked to rate support.')
-            user_states[recipient_id] = "awaiting_feedback"
-            await message.reply_text(FEEDBACK_SENT_MESSAGE)
-        else:
-            console_logger.error('User to ask for feedback not found.')
-            await message.reply_text(USER_NOT_FOUND_FEEDBACK_MESSAGE)
-        return
