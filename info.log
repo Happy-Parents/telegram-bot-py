@@ -1,0 +1,594 @@
+[2025-11-20 10:29:44,535] [INFO] 🤖 Happy Bot has been launched...
+[2025-11-20 10:32:21,161] [INFO] User with id 417950760 started chat with admin.
+[2025-11-20 10:32:41,895] [INFO] Admin unswer to user id 417950760 was sent.
+[2025-11-20 10:33:07,593] [INFO] Admin asked to rate support.
+[2025-11-20 10:33:08,231] [INFO] User with id 417950760 was asked to rate support.
+[2025-11-20 10:33:12,533] [INFO] User with id 417950760 rated support in valid way: 😃
+[2025-11-20 10:53:03,180] [ERROR] ❗ GLOBAL ERROR ❗
+[2025-11-20 10:53:03,180] [ERROR] Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+[2025-11-20 10:53:11,974] [ERROR] Не вдалося відправити помилку адміну: Timed out
+[2025-11-20 10:53:42,963] [ERROR] ❗ GLOBAL ERROR ❗
+[2025-11-20 10:53:42,964] [ERROR] Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+
+[2025-11-20 10:53:49,169] [ERROR] Не вдалося відправити помилку адміну: Timed out
+[2025-11-20 11:03:26,665] [ERROR] ❗ GLOBAL ERROR ❗
+[2025-11-20 11:03:26,666] [ERROR] Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+[2025-11-20 11:03:26,668] [ERROR] Не вдалося відправити помилку адміну: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+[2025-11-20 11:03:27,668] [ERROR] ❗ GLOBAL ERROR ❗
+[2025-11-20 11:03:27,669] [ERROR] Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+[2025-11-20 11:03:27,672] [ERROR] Не вдалося відправити помилку адміну: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+[2025-11-20 11:03:29,173] [ERROR] ❗ GLOBAL ERROR ❗
+[2025-11-20 11:03:29,174] [ERROR] Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+[2025-11-20 11:03:29,176] [ERROR] Не вдалося відправити помилку адміну: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+[2025-11-20 11:03:31,428] [ERROR] ❗ GLOBAL ERROR ❗
+[2025-11-20 11:03:31,428] [ERROR] Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 273, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 670, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 4611, in get_updates
+    await self._post(
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 698, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/_bot.py", line 727, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kyryloliinyk/.pyenv/versions/3.12.6/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 297, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+[2025-11-20 11:03:31,434] [ERROR] Не вдалося відправити помилку адміну: httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
