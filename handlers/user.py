@@ -4,7 +4,7 @@ from telegram import Update, Message
 from telegram.ext import ContextTypes
 from state import user_states, message_to_user_map
 from .admin import handle_admin_reply
-from log_config import console_logger
+from log_config import file_logger
 from keyboards import BOT_FEATURES_KEYBOARD
 from config import ADMIN_GROUP_ID
 from messages import *
@@ -37,7 +37,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     # Conversation beginning
     if text == QUESTION_BUTTON_TEXT:
         # TODO: handle update.effective_user.is_bot == True
-        console_logger.info(f'User with id {user_id} started chat with admin.')
+        file_logger.info(f'User with id {user_id} started chat with admin.')
         user_states[user_id] = "active_chat"
         await message.reply_text(ASK_MESSAGE)
         return
@@ -59,12 +59,12 @@ async def handle_user_feedback(message: Message, context: ContextTypes.DEFAULT_T
             chat_id=ADMIN_GROUP_ID,
             text=f"📊 Користувач id:{user_id} оцінив розмову як {text}"
         )
-        console_logger.info(f'User with id {user_id} rated support in valid way: {text}')
+        file_logger.info(f'User with id {user_id} rated support in valid way: {text}')
         await message.reply_text(THANKS_FEEDBACK_MESSAGE)
     else:
-        console_logger.warning(f'User with id {user_id} rated support in invalid way: {text}')
+        file_logger.warning(f'User with id {user_id} rated support in invalid way: {text}')
         await message.reply_text(CLOSE_CONVERSATION_MESSAGE)
-        console_logger.info('Finit message to user delivered.')
+        file_logger.info('Finit message to user delivered.')
 
     user_states.pop(user_id, None)
 
